@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+console.log(morgan);
 
 const blogPostRouter = require('./blogPostRouter');
 const app = express();
