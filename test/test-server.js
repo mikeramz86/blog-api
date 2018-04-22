@@ -72,6 +72,7 @@ describe('Blog Posts', function() {
       // first have to get
       .get('/blog-posts')
       .then(function( res) {
+        console.log(res);
         const updatedPost = Object.assign(res.body[0], {
           title: 'connect the dots',
           content: 'la la la la la'
