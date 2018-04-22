@@ -4,7 +4,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
-const {Blogposts} = require('./models');
+const {BlogPosts} = require('./models');
 
 function lorem() {
     return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
@@ -14,14 +14,14 @@ function lorem() {
 };
 
 //--------GET ENDPOINT------
-Blogposts.create (
+BlogPosts.create (
     'First Blog Title', lorem(), 'John Smith');
-Blogposts.create (
+BlogPosts.create (
     'Second Blog Post', lorem(), 'Jane Doe'
 );
 
 router.get('/', (req, res) => {
-    res.json(Blogposts.get());
+    res.json(BlogPosts.get());
 });
 
 //--------POST ENDPOINT------
@@ -36,12 +36,12 @@ router.post('/', jsonParser, (req, res) => {
             return res.status(400).send(message);
         }
     }
-    const item = Blogposts.create(
+    const item = BlogPosts.create(
         req.body.title, req.body.content, req.body.author);
     res.status(201).json(item)
 });
 
-//--------POST ENDPOINT------
+//--------PUT ENDPOINT------
 
 router.put('/:id', jsonParser, (req, res) => {
     const requiredFields = [
